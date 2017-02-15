@@ -10,7 +10,7 @@ namespace Sort
   {
   protected:
     using Value = typename T::value_type;
-    using Compare = std::function<bool(typename T::value_type, typename T::value_type)>;
+    using Compare = std::function<bool(Value, Value)>;
 
     static bool defaultCompare(Value lhs, Value rhs);
 
