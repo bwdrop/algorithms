@@ -26,11 +26,11 @@ namespace Sort
   template <typename T>
   void Bubble<T>::sort(T &container, typename ASort<T>::Compare comp) const
   {
-    typename T::reverse_iterator rit;
-    for (rit = std::next(container.rbegin()); rit != container.rend(); rit++)
+    typename T::const_reverse_iterator crit;
+    for (crit = std::next(container.crbegin()); crit != container.crend(); crit++)
     {
       bool sorted = true;
-      for (typename T::iterator it = container.begin(); it != rit.base(); it++)
+      for (typename T::iterator it = container.begin(); it != crit.base(); it++)
       {
         typename T::iterator next = std::next(it);
         if (comp(*next, *it))
