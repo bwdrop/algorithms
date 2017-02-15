@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Bubble.hpp"
 #include "Selection.hpp"
+#include "Insertion.hpp"
 
 void printList(std::list<int> const list)
 {
@@ -14,11 +15,9 @@ void printList(std::list<int> const list)
   std::cout << std::endl;
 }
 
-int main(int argc, char const *argv[])
+int main()
 {
-  (void)argc;
-  (void)argv;
-  Sort::ASort<std::list<int>> *sorter = new Sort::Selection<std::list<int>>();
+  Sort::ASort<std::list<int>> *sorter = new Sort::Insertion<std::list<int>>();
   std::list<int> container = { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
 
   printList(container);
