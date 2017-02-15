@@ -10,9 +10,9 @@ namespace Sort
   {
   protected:
     using Value = typename T::value_type;
-    using Compare = std::function<bool(Value, Value)>;
+    using Compare = std::function<bool(Value const &, Value const &)>;
 
-    static bool defaultCompare(Value lhs, Value rhs);
+    static bool defaultCompare(Value const &lhs, Value const &rhs);
 
   private:
     ASort(ASort const &);
@@ -33,7 +33,7 @@ namespace Sort
   ASort<T>::~ASort() { }
 
   template <typename T>
-  bool ASort<T>::defaultCompare(Value lhs, Value rhs)
+  bool ASort<T>::defaultCompare(Value const &lhs, Value const &rhs)
   {
     return lhs < rhs;
   }
