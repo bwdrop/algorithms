@@ -3,6 +3,7 @@
 #include <list>
 #include <iostream>
 #include "Bubble.hpp"
+#include "Selection.hpp"
 
 void printList(std::list<int> const list)
 {
@@ -17,7 +18,7 @@ int main(int argc, char const *argv[])
 {
   (void)argc;
   (void)argv;
-  Sort::ASort<std::list<int>> *sorter = new Sort::Bubble<std::list<int>>();
+  Sort::ASort<std::list<int>> *sorter = new Sort::Selection<std::list<int>>();
   std::list<int> container = { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
 
   printList(container);
