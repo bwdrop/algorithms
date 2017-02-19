@@ -5,10 +5,12 @@
 #include "Bubble.hpp"
 #include "Selection.hpp"
 #include "Insertion.hpp"
+#include "Merge.hpp"
 
-void printList(std::list<int> const list)
+template <typename T>
+void printList(T const list)
 {
-  for (std::list<int>::const_iterator it = list.begin(); it != list.end(); it++)
+  for (typename T::const_iterator it = list.cbegin(); it != list.cend(); it++)
   {
     std::cout << *it << " ";
   }
@@ -17,11 +19,12 @@ void printList(std::list<int> const list)
 
 int main()
 {
-  Sort::ASort<std::list<int>> *sorter = new Sort::Insertion<std::list<int>>();
-  std::list<int> container = { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+  Sort::ASort<std::vector<int>> *sorter = new Sort::Merge<std::vector<int>>();
+  std::vector<int> container = { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
 
-  printList(container);
+  printList<std::vector<int>>(container);
   sorter->sort(container);
   delete sorter;
-  printList(container);
+  printList<std::vector<int>>(container);
+  container.clear();
 }
