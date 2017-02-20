@@ -35,7 +35,7 @@ namespace Sort
   template <typename T>
   bool ASort<T>::defaultCompare(Value const &lhs, Value const &rhs)
   {
-    return lhs <= rhs;
+    return lhs < rhs;
   }
 
   template <typename T>

@@ -6,6 +6,7 @@
 #include "Selection.hpp"
 #include "Insertion.hpp"
 #include "Merge.hpp"
+#include "Quick.hpp"
 
 template <typename T>
 void printList(T const list)
@@ -19,7 +20,7 @@ void printList(T const list)
 
 int main()
 {
-  Sort::ASort<std::vector<int>> *sorter = new Sort::Merge<std::vector<int>>();
+  Sort::ASort<std::vector<int>> *sorter = new Sort::Quick<std::vector<int>>();
   std::vector<int> container = { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
 
   printList<std::vector<int>>(container);

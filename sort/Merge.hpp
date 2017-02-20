@@ -1,6 +1,8 @@
 #ifndef MERGE_HPP_
 # define MERGE_HPP_
 
+#include <iterator>
+
 namespace Sort
 {
   template <typename T>
@@ -44,16 +46,16 @@ namespace Sort
       return right;
     else if (right.empty())
       return left;
-    else if (comp(*(left.cbegin()), *(right.cbegin())))
+    else if (comp(*left.cbegin(), *right.cbegin()))
     {
-      result.insert(result.cend(), *(left.cbegin()));
+      result.insert(result.cend(), *left.cbegin());
       T tmp(std::next(left.cbegin()), left.cend());
       T fusion = merge(tmp, right, comp);
       result.insert(result.cend(), fusion.cbegin(), fusion.cend());
     }
     else
     {
-      result.insert(result.cend(), *(right.cbegin()));
+      result.insert(result.cend(), *right.cbegin());
       T tmp(std::next(right.cbegin()), right.cend());
       T fusion = merge(left, tmp, comp);
       result.insert(result.cend(), fusion.cbegin(), fusion.cend());

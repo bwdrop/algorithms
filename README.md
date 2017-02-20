@@ -8,7 +8,7 @@ Algorithms in C++
 * Merge sort
 * Quick sort
 
-## Searching / Graph traversal
+## Searching / Graph traversal [TODO]
 * Binary search
 * Breadth-first search
 * Depth-first search
