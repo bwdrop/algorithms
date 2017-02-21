@@ -1,6 +1,7 @@
 #ifndef QUICK_HPP_
 # define QUICK_HPP_
 
+#include <ctime>
 #include <cstdlib>
 #include <iterator>
 #include <algorithm>
@@ -26,7 +27,10 @@ namespace Sort
   };
 
   template <typename T>
-  Quick<T>::Quick() { }
+  Quick<T>::Quick()
+  {
+    srand(time(NULL));
+  }
 
   template <typename T>
   Quick<T>::~Quick() { }
