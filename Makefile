@@ -1,28 +1,38 @@
 NAME			= algorithms
+TSTNAME		= run_tests
 
-SRC_DIR		= sort
+# compiler
+CXX				= g++
+CPPFLAGS	= -Wall -Wextra -W -Werror -std=c++11
+TSTLIBS		= -lcppunit
 
-SRC				= $(SRC_DIR)/main.cpp \
+# directory names
+SRCDIR		= sort
+TSTDIR		= test
+
+SRC				= $(SRCDIR)/main.cpp
+TSTSRC		= $(TSTDIR)/runner.cpp \
+						$(TSTDIR)/SortTest.cpp
 
 OBJ				= $(SRC:.cpp=.o)
-
-CC				= g++
+TSTOBJ		= $(TSTSRC:.cpp=.o)
 
 RM				= rm -f
-
-CPPFLAGS	+= -Wall -Wextra -W -Werror
-CPPFLAGS	+= -std=c++11
 
 all: 			$(NAME)
 
 $(NAME):	$(OBJ)
-					$(CC) -o $(NAME) $(OBJ)
+					$(CXX) -o $(NAME) $(OBJ)
+
+check:		$(TSTOBJ)
+					$(CXX) -o $(TSTNAME) $(TSTOBJ) -I$(SRCDIR) $(TSTLIBS)
+					./$(TSTNAME)
 
 clean:
-					$(RM) $(OBJ)
+					$(RM) $(OBJ) $(TSTOBJ)
 
 fclean:		clean
-					$(RM) $(NAME)
+					$(RM) $(NAME) $(TSTNAME)
 
 re:				fclean all
 
