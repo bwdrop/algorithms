@@ -18,8 +18,8 @@ namespace Test
     CPPUNIT_TEST_SUITE_END();
 
   private:
-    std::list<int> *lunsorted;
-    std::list<int> *lsorted;
+    std::list<int> lunsorted;
+    std::list<int> lsorted;
 
   public:
     void setUp();

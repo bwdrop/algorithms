@@ -10,7 +10,7 @@ namespace Sort
   {
   protected:
     using Value = typename T::value_type;
-    using Compare = std::function<bool(Value const &, Value const &)>;
+    using Compare = std::function<bool(Value const &, Value const &)> const &;
 
     static bool defaultCompare(Value const &lhs, Value const &rhs);
 
@@ -23,7 +23,7 @@ namespace Sort
     virtual ~ASort();
 
     void sort(T &container) const;
-    virtual void sort(T &container, Compare comp) const = 0;
+    virtual void sort(T &container, Compare &comp) const = 0;
   };
 
   template <typename T>

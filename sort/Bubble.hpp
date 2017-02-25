@@ -14,7 +14,7 @@ namespace Sort
     Bubble();
     virtual ~Bubble();
 
-    virtual void sort(T &container, typename ASort<T>::Compare comp) const;
+    virtual void sort(T &container, typename ASort<T>::Compare &comp) const;
   };
 
   template <typename T>
@@ -24,13 +24,13 @@ namespace Sort
   Bubble<T>::~Bubble() { }
 
   template <typename T>
-  void Bubble<T>::sort(T &container, typename ASort<T>::Compare comp) const
+  void Bubble<T>::sort(T &container, typename ASort<T>::Compare &comp) const
   {
     typename T::const_reverse_iterator crit;
-    for (crit = std::next(container.crbegin()); crit != container.crend(); crit++)
+    for (crit = std::next(container.crbegin()); crit != container.crend(); ++crit)
     {
       bool sorted = true;
-      for (typename T::iterator it = container.begin(); it != crit.base(); it++)
+      for (typename T::iterator it = container.begin(); it != crit.base(); ++it)
       {
         typename T::iterator next = std::next(it);
         if (comp(*next, *it))

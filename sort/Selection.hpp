@@ -14,7 +14,7 @@ namespace Sort
     Selection();
     virtual ~Selection();
 
-    virtual void sort(T &container, typename ASort<T>::Compare comp) const;
+    virtual void sort(T &container, typename ASort<T>::Compare &comp) const;
   };
 
   template <typename T>
@@ -24,13 +24,13 @@ namespace Sort
   Selection<T>::~Selection() { }
 
   template <typename T>
-  void Selection<T>::sort(T &container, typename ASort<T>::Compare comp) const
+  void Selection<T>::sort(T &container, typename ASort<T>::Compare &comp) const
   {
     typename T::iterator it;
-    for (it = container.begin(); it != std::prev(container.end()); it++)
+    for (it = container.begin(); it != std::prev(container.end()); ++it)
     {
       typename T::iterator min = it;
-      for (typename T::iterator jt = std::next(it); jt != container.end(); jt++)
+      for (typename T::iterator jt = std::next(it); jt != container.end(); ++jt)
       {
         if (comp(*jt, *min))
           min = jt;

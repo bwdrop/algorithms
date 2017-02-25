@@ -11,7 +11,7 @@ namespace Sort{
     Insertion();
     virtual ~Insertion();
 
-    virtual void sort(T &container, typename ASort<T>::Compare comp) const;
+    virtual void sort(T &container, typename ASort<T>::Compare &comp) const;
   };
 
   template <typename T>
@@ -21,17 +21,17 @@ namespace Sort{
   Insertion<T>::~Insertion() { }
 
   template <typename T>
-  void Insertion<T>::sort(T &container, typename ASort<T>::Compare comp) const
+  void Insertion<T>::sort(T &container, typename ASort<T>::Compare &comp) const
   {
     typename T::iterator it;
-    for (it = std::next(container.begin()); it != container.end(); it++)
+    for (it = std::next(container.begin()); it != container.end(); ++it)
     {
       typename T::value_type value = *it;
       typename T::iterator curr = it;
       while (curr != container.begin() && comp(value, *std::prev(curr)))
       {
         *curr = *std::prev(curr);
-        curr--;
+        --curr;
       }
       *curr = value;
     }
