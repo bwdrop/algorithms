@@ -35,9 +35,8 @@ namespace Sort
         if (comp(*jt, *min))
           min = jt;
       }
-      if (min != it) {
+      if (min != it)
         std::swap(*min, *it);
-      }
     }
   }
 }
