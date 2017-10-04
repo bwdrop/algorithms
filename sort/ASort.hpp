@@ -24,6 +24,7 @@ namespace Sort
 
     void sort(T &container) const;
     virtual void sort(T &container, Compare &comp) const = 0;
+    static ASort<T> *clone();
   };
 
   template <typename T>

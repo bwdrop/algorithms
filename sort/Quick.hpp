@@ -23,7 +23,8 @@ namespace Sort
     Quick();
     ~Quick();
 
-    void sort(T &container, typename ASort<T>::Compare &comp) const;
+    virtual void sort(T &container, typename ASort<T>::Compare &comp) const;
+    static ASort<T> *clone();
   };
 
   template <typename T>
@@ -78,6 +79,12 @@ namespace Sort
     }
     std::swap(*pivot, *std::prev(leftmost));
     return std::prev(leftmost);
+  }
+
+  template <typename T>
+  ASort<T> *Quick<T>::clone()
+  {
+    return new Quick<T>();
   }
 }
 

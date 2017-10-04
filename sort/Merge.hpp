@@ -18,6 +18,7 @@ namespace Sort
     virtual ~Merge();
 
     virtual void sort(T &container, typename ASort<T>::Compare &comp) const;
+    static ASort<T> *clone();
   };
 
   template <typename T>
@@ -66,6 +67,12 @@ namespace Sort
     else if (comp(*left.cbegin(), *right.cbegin()))
       return mergeIntoOne(left, right, comp, true);
     return mergeIntoOne(right, left, comp, false);
+  }
+
+  template <typename T>
+  ASort<T> *Merge<T>::clone()
+  {
+    return new Merge<T>();
   }
 }
 

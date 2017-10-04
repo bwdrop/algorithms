@@ -12,6 +12,7 @@ namespace Sort{
     virtual ~Insertion();
 
     virtual void sort(T &container, typename ASort<T>::Compare &comp) const;
+    static ASort<T> *clone();
   };
 
   template <typename T>
@@ -35,6 +36,12 @@ namespace Sort{
       }
       *curr = value;
     }
+  }
+
+  template <typename T>
+  ASort<T> *Insertion<T>::clone()
+  {
+    return new Insertion<T>();
   }
 }
 

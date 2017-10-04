@@ -15,6 +15,7 @@ namespace Sort
     virtual ~Bubble();
 
     virtual void sort(T &container, typename ASort<T>::Compare &comp) const;
+    static ASort<T> *clone();
   };
 
   template <typename T>
@@ -42,6 +43,12 @@ namespace Sort
       if (sorted)
         return;
     }
+  }
+
+  template <typename T>
+  ASort<T> *Bubble<T>::clone()
+  {
+    return new Bubble<T>();
   }
 }
 

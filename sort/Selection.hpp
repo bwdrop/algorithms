@@ -15,6 +15,7 @@ namespace Sort
     virtual ~Selection();
 
     virtual void sort(T &container, typename ASort<T>::Compare &comp) const;
+    static ASort<T> *clone();
   };
 
   template <typename T>
@@ -38,6 +39,12 @@ namespace Sort
       if (min != it)
         std::swap(*min, *it);
     }
+  }
+
+  template <typename T>
+  ASort<T> *Selection<T>::clone()
+  {
+    return new Selection<T>();
   }
 }
 
