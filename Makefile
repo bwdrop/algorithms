@@ -4,6 +4,7 @@ TSTNAME	= run_tests
 # compiler
 CXX	= g++
 CPPFLAGS = -Wall -Wextra -W -Werror -std=c++11
+LDFLAGS	= -lboost_program_options
 TSTLIBS	= -lcppunit
 
 # directory names
@@ -22,7 +23,7 @@ RM	= rm -f
 all: 	$(NAME)
 
 $(NAME): $(OBJ)
-	$(CXX) -o $(NAME) $(OBJ)
+	$(CXX) -o $(NAME) $(OBJ) $(LDFLAGS)
 
 check:	$(TSTOBJ)
 	$(CXX) -o $(TSTNAME) $(TSTOBJ) -I$(SRCDIR) $(TSTLIBS)
