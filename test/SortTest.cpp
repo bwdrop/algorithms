@@ -1,9 +1,9 @@
 #include "SortTest.hpp"
-#include "../sort/Bubble.hpp"
-#include "../sort/Selection.hpp"
-#include "../sort/Insertion.hpp"
-#include "../sort/Merge.hpp"
-#include "../sort/Quick.hpp"
+#include "../src/Bubble.hpp"
+#include "../src/Selection.hpp"
+#include "../src/Insertion.hpp"
+#include "../src/Merge.hpp"
+#include "../src/Quick.hpp"
 
 namespace Test
 {

@@ -1,4 +1,4 @@
-NAME	= algorithms
+NAME	= sort
 TSTNAME	= run_tests
 
 # compiler
@@ -10,7 +10,7 @@ LDLIBS	= -lboost_program_options
 TSTLIBS	= -lcppunit
 
 # directory names
-SRCDIR	= sort
+SRCDIR	= src
 TSTDIR	= test
 
 SRC	= $(SRCDIR)/main.cpp

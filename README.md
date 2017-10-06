@@ -1,16 +1,27 @@
 # algorithms
-Algorithms in C++
+Sorting algorithms in C++
 
-## Sorting
-* Bubble sort
-* Selection sort
-* Insertion sort
-* Merge sort
-* Quick sort
+## Requirements
+- boost 1.65.1 (http://www.boost.org/)
 
-## Searching / Graph traversal [TODO]
-* Binary search
-* Breadth-first search
-* Depth-first search
-* Dijikstra's algorithm
-* A*
+## Build
+```
+make
+```
+
+## Usage
+```sh
+./sort [-n number] algorithm
+```
+- `number` is the number of elements to sort (defaults to 100)
+- `algorithm` is the type of algorithm to use. Available algorithms are:
+  - bubble
+  - selection
+  - insertion
+  - merge
+  - quick
+
+## TODO list
+- [ ] add sort algorithm visualization
+- [ ] update README to include algorithm explanation
+- [ ] add new algorithms
