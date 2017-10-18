@@ -1,15 +1,15 @@
 #ifndef FACTORY_HPP_
 # define FACTORY_HPP_
 
-#include <map>
 #include <string>
+#include <unordered_map>
 
 template <typename T, typename Key=std::string>
 class Factory
 {
 private:
   using CreateFn = T *(*)();
-  std::map<Key, CreateFn> _map;
+  std::unordered_map<Key, CreateFn> _map;
 
 public:
   Factory();
@@ -33,7 +33,7 @@ void Factory<T, Key>::record(Key const &key, CreateFn fn)
 template <typename T, typename Key>
 T *Factory<T, Key>::create(Key const &key) const
 {
-  typename std::map<Key, CreateFn>::const_iterator it = _map.find(key);
+  typename std::unordered_map<Key, CreateFn>::const_iterator it = _map.find(key);
   if (it != _map.cend())
     return (it->second)();
   return NULL;
