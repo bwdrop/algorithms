@@ -17,9 +17,9 @@
 namespace po = boost::program_options;
 
 template <typename T>
-void printList(T const list)
+void printList(T const &list)
 {
-  for (typename T::const_iterator it = list.cbegin(); it != list.cend(); it++)
+  for (typename T::const_iterator it = list.cbegin(); it != list.cend(); ++it)
     std::cout << *it << " ";
   std::cout << std::endl;
 }
@@ -48,7 +48,7 @@ Factory<Sort::ASort<std::vector<int>>> initFactory()
   return factory;
 }
 
-int run(std::string algorithm, int nb) {
+int run(std::string const &algorithm, int nb) {
   Factory<Sort::ASort<std::vector<int>>> factory = initFactory();
   Sort::ASort<std::vector<int>> *sorter = factory.create(algorithm);
   if (sorter)
