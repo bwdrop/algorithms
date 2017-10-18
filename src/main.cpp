@@ -25,45 +25,42 @@ void printList(T const list)
 }
 
 template <typename T>
-T* randomizeArray(typename T::value_type count) {
-  T* array = new T();
+T randomizeArray(typename T::value_type count) {
+  T array;
   std::random_device rd;
   std::mt19937 g(rd());
 
   for (typename T::value_type i = 1; i < count + 1; ++i)
-    array->insert(array->cend(), i);
-  std::shuffle(array->begin(), array->end(), g);
+    array.insert(array.cend(), i);
+  std::shuffle(array.begin(), array.end(), g);
   return array;
 }
 
-Factory<Sort::ASort<std::vector<int>>> *initFactory()
+Factory<Sort::ASort<std::vector<int>>> initFactory()
 {
-  Factory<Sort::ASort<std::vector<int>>> *factory;
-  factory = new Factory<Sort::ASort<std::vector<int>>>();
+  Factory<Sort::ASort<std::vector<int>>> factory;
 
-  factory->record("bubble", &Sort::Bubble<std::vector<int>>::clone);
-  factory->record("selection", &Sort::Selection<std::vector<int>>::clone);
-  factory->record("insertion", &Sort::Insertion<std::vector<int>>::clone);
-  factory->record("merge", &Sort::Merge<std::vector<int>>::clone);
-  factory->record("quick", &Sort::Quick<std::vector<int>>::clone);
+  factory.record("bubble", &Sort::Bubble<std::vector<int>>::clone);
+  factory.record("selection", &Sort::Selection<std::vector<int>>::clone);
+  factory.record("insertion", &Sort::Insertion<std::vector<int>>::clone);
+  factory.record("merge", &Sort::Merge<std::vector<int>>::clone);
+  factory.record("quick", &Sort::Quick<std::vector<int>>::clone);
   return factory;
 }
 
 int run(std::string algorithm, int nb) {
-  Factory<Sort::ASort<std::vector<int>>> *factory = initFactory();
-  Sort::ASort<std::vector<int>> *sorter = factory->create(algorithm);
+  Factory<Sort::ASort<std::vector<int>>> factory = initFactory();
+  Sort::ASort<std::vector<int>> *sorter = factory.create(algorithm);
   if (sorter)
   {
-    std::vector<int> *container = randomizeArray<std::vector<int>>(nb);
+    std::vector<int> container = randomizeArray<std::vector<int>>(nb);
 
     std::cout << "Using " << algorithm << " sort on " << nb << " elements.\n";
-    printList<std::vector<int>>(*container);
-    sorter->sort(*container);
+    printList<std::vector<int>>(container);
+    sorter->sort(container);
     delete sorter;
-    printList<std::vector<int>>(*container);
-    container->clear();
-    delete container;
-    delete factory;
+    printList<std::vector<int>>(container);
+    container.clear();
     return 0;
   }
   std::cerr << "No such sorting algorithm: " << algorithm << ".\n";
